@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto CanSat - S-Alpha</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0b0c10;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #1f2833;
+            color: #66fcf1;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 32px;
+            font-weight: bold;
+            animation: fadeIn 2s;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 30px;
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #1f2833;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 1.5s forwards;
+        }
+        h2 {
+            color: #45a29e;
+            text-align: center;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .team-member {
+            background-color: #66fcf1;
+            color: #0b0c10;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px;
+            text-align: center;
+            width: 30%;
+            font-weight: bold;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .team-member:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            display: none;
+            background-color: #1f2833;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            background-color: #1f2833;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>Proyecto CanSat - S-Alpha</header>
+    <div class="container">
+        <section>
+            <h2>¿Quiénes somos?</h2>
+            <p>Somos el equipo S-Alpha, un grupo de estudiantes de 2° de Bachillerato de Ciencias Tecnológicas con una pasión por la ingeniería aeroespacial. Nos hemos unido para diseñar, construir y lanzar un CanSat, un satélite del tamaño de una lata de refresco que nos permitirá realizar investigaciones atmosféricas y mejorar nuestra comprensión de los sistemas espaciales.</p>
+            <p>Estamos comprometidos con la exploración científica y la innovación, aplicando conocimientos en programación, electrónica, diseño estructural y comunicación inalámbrica para lograr una misión exitosa.</p>
+        </section>
+        <section>
+            <h2>Organización del equipo y roles</h2>
+            <div class="team">
+                <div class="team-member" onclick="toggleInfo('info-hilay')">
+                    <strong>Hilay</strong><br>Programación, redes sociales, diseño 3D y planificación del despliegue.
+                    <div class="info" id="info-hilay">
+                        <p>Hilay es responsable de la programación del CanSat, el diseño de redes sociales y la planificación del despliegue. Además, está a cargo de crear modelos 3D para el CanSat.</p>
+                    </div>
+                </div>
+                <div class="team-member" onclick="toggleInfo('info-hector')">
+                    <strong>Héctor</strong><br>Programación y esquematización eléctrica, responsable del control de hardware.
+                    <div class="info" id="info-hector">
+                        <p>Héctor es el encargado de la programación y de la esquematización eléctrica del CanSat. También supervisa el control de hardware para asegurar su correcto funcionamiento.</p>
+                    </div>
+                </div>
+                <div class="team-member" onclick="toggleInfo('info-mani-lionardo')">
+                    <strong>Mani y Lionardo</strong><br>Diseño creativo, gestión de redes sociales y desarrollo de estrategias de lanzamiento.
+                    <div class="info" id="info-mani-lionardo">
+                        <p>Mani y Lionardo son responsables del diseño creativo, las estrategias de marketing en redes sociales y del desarrollo de planes de lanzamiento.</p>
+                    </div>
+                </div>
+                <div class="team-member" onclick="toggleInfo('info-alejandro')">
+                    <strong>Alejandro</strong><br>Diseño 3D, ensamblaje de circuitos eléctricos y optimización estructural.
+                    <div class="info" id="info-alejandro">
+                        <p>Alejandro se encarga del diseño 3D del CanSat y de ensamblar los circuitos eléctricos, optimizando la estructura para la misión.</p>
+                    </div>
+                </div>
+                <div class="team-member" onclick="toggleInfo('info-felipe')">
+                    <strong>Felipe</strong><br>Encargado de los sistemas de paracaídas, antena, LoRa y comunicaciones de radio.
+                    <div class="info" id="info-felipe">
+                        <p>Felipe es responsable de los sistemas de paracaídas y antenas, así como de asegurar que las comunicaciones LoRa y de radio funcionen correctamente durante el vuelo.</p>
+                    </div>
+                </div>
+                <div class="team-member" onclick="toggleInfo('info-jules')">
+                    <strong>Jules</strong><br>Especialista en diseño creativo y desarrollo de sistemas de aterrizaje.
+                    <div class="info" id="info-jules">
+                        <p>Jules trabaja en el diseño creativo del CanSat y en el desarrollo de los sistemas de aterrizaje, asegurando un retorno seguro del satélite.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Misión Primaria</h2>
+            <p>El objetivo principal de nuestra misión es la recopilación y transmisión de datos atmosféricos durante el descenso del CanSat. Durante el descenso, el CanSat será capaz de capturar información sobre el clima y el medio ambiente en la atmósfera, lo cual es clave para el estudio de fenómenos meteorológicos y la mejora de la tecnología de satélites.</p>
+            <h3>Instrumentación</h3>
+            <ul>
+                <li><strong>Sensor BMP280</strong>: Mide la presión atmosférica y la temperatura. Estos datos permitirán analizar las variaciones en la atmósfera en tiempo real y ayudarán a determinar la estabilidad de las condiciones atmosféricas durante el descenso.</li>
+                <li><strong>Módulo de transmisión LoRa</strong>: Este módulo de comunicación a larga distancia permitirá transmitir los datos recolectados por los sensores a nuestra estación base, con una eficiencia energética elevada, lo que asegura que el CanSat funcione durante todo el proceso de caída.</li>
+                <li><strong>Microcontrolador Arduino</strong>: Este microcontrolador es el cerebro de nuestra misión. Se encarga de procesar y almacenar los datos de los sensores, así como de gestionar la transmisión de la información mediante LoRa a la estación base. También es fundamental para la comunicación entre los diferentes componentes del CanSat.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Misión Secundaria</h2>
+            <p>El CanSat también tiene una misión secundaria que consiste en la predicción del punto de caída y el seguimiento en tiempo real, lo que nos permitirá realizar un análisis preciso de la trayectoria del CanSat durante su descenso y mejorar futuras misiones.</p>
+            <h3>Seguimiento en Tiempo Real</h3>
+            <p>Gracias a un sensor GPS integrado en el CanSat, podremos conocer la ubicación exacta del dispositivo en todo momento. Esto se complementa con un programa desarrollado en Python que procesará los datos del GPS y los mostrará en un mapa en tiempo real utilizando Google Maps. Este seguimiento es esencial para garantizar un aterrizaje exitoso y el posterior análisis de los datos recolectados.</p>
+            <h3>Predicción del Punto de Caída</h3>
+            <p>Además del seguimiento en tiempo real, utilizaremos cálculos avanzados para predecir el punto de caída del CanSat antes de que ocurra. Estos cálculos tomarán en cuenta varios factores:</p>
+            <ul>
+                <li><strong>Altura inicial</strong>: Determinada por el sensor BMP280, que mide la altitud desde el momento del lanzamiento.</li>
+                <li><strong>Velocidad de descenso</strong>: Calculada en intervalos de 1 segundo, lo que nos permitirá prever la velocidad exacta con la que el CanSat está descendiendo y ajustar la predicción de su aterrizaje.</li>
+                <li><strong>Condiciones atmosféricas y resistencia aerodinámica</strong>: Utilizando datos del sensor de presión y otros cálculos basados en la resistencia del aire, podremos simular la caída del CanSat y mejorar la precisión de nuestra predicción.</li>
+            </ul>
+        </section>
+    </div>
+    <footer>
+        Proyecto CanSat - S-Alpha | 2025 | Exploración e Innovación Aeroespacial
+    </footer>
+
+    <script>
+        function toggleInfo(id) {
+            const info = document.getElementById(id);
+            info.style.display = (info.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
+
