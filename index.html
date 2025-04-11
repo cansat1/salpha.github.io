@@ -7,25 +7,23 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@500&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Estilos generales */
+       
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1A1A2E; /* Fondo oscuro */
+            background-color: #1A1A2E;
             color: white;
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* Fondo de estrellas */
+        
         @keyframes moveStars {
             0% { transform: translateY(0); }
             100% { transform: translateY(-1000px); }
         }
-
         .stars, .stars2, .stars3 {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -33,7 +31,6 @@
             background: transparent;
             z-index: -1;
         }
-
         .stars::after, .stars2::after, .stars3::after {
             content: '';
             position: absolute;
@@ -45,132 +42,122 @@
             box-shadow: 100px 200px white, 300px 400px white, 500px 600px white;
             animation: moveStars 50s linear infinite;
         }
+        .stars2::after { animation-duration: 100s; }
+        .stars3::after { animation-duration: 150s; }
 
-        .stars2::after {
-            animation-duration: 100s;
-        }
-
-        .stars3::after {
-            animation-duration: 150s;
-        }
-
-        /* Portada */
+       
         .portada {
-            position: relative;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
+            position: relative;
+            padding: 0 20px;
         }
-
         .portada-content h1 {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             margin: 0;
             font-family: 'Orbitron', sans-serif;
-            color: #E94560; /* Rojo vibrante */
-            animation: fadeIn 2s ease-in-out;
+            color: #E94560;
         }
-
         .portada-content h2 {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             margin: 10px 0;
             font-family: 'Orbitron', sans-serif;
-            color: #00B8A9; /* Verde azulado */
-            animation: fadeIn 2.5s ease-in-out;
+            color: #00B8A9;
         }
-
         .portada-content p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin: 20px 0;
-            color: #F8F3D4; /* Amarillo claro */
-            animation: fadeIn 3s ease-in-out;
+            color: #F8F3D4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Secciones */
         .section {
             position: relative;
-            padding: 50px 20px;
-            text-align: center;
-            background-color: rgba(22, 33, 62, 0.9); /* Azul oscuro con transparencia */
-            margin: 20px;
+            padding: 30px 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background-color: rgba(22, 33, 62, 0.9);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
         }
-
         .section h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 20px;
             font-family: 'Orbitron', sans-serif;
-            color: #E94560; /* Rojo vibrante */
+            color: #E94560;
+            text-align: center;
         }
 
-        /* Equipo */
+        
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
-
         .team-member {
-            background-color: #0F3460; /* Azul medio */
+            background-color: #0F3460;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
+            text-align: center;
         }
-
         .team-member:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
-
         .team-member i {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: #00B8A9; /* Verde azulado */
+            color: #00B8A9;
+        }
+        .team-member h3 {
+            margin: 10px 0;
+            color: #F8F3D4;
         }
 
-        /* Botón espacial */
+     
         .btn-espacial {
-            background-color: #E94560; /* Rojo vibrante */
+            background-color: #E94560;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
             margin-top: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            display: flex;
+            transition: all 0.3s ease;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 0.9rem;
         }
-
         .btn-espacial:hover {
-            background-color: #FF6B6B; /* Rojo más claro */
-            transform: scale(1.1);
+            background-color: #FF6B6B;
+            transform: scale(1.05);
         }
 
-        .btn-espacial i {
-            font-size: 1.2rem;
-        }
-
-        /* Foto del grupo */
+        /* Imágenes */
         .foto-grupo {
-            margin-top: 30px;
+            margin: 30px auto;
+            text-align: center;
         }
-
         .foto-grupo img {
-            width: 100%;
-            max-width: 600px; /* Ajusta el tamaño de la foto del grupo */
+            max-width: 100%;
+            max-height: 500px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            object-fit: contain;
         }
 
-        /* Modales */
+      
         .modal {
             display: none;
             position: fixed;
@@ -182,79 +169,82 @@
             background-color: rgba(0, 0, 0, 0.8);
             overflow: auto;
         }
-
         .modal-content {
-            background-color: #16213E; /* Azul oscuro */
-            margin: 10% auto;
+            background-color: #16213E;
+            margin: 20px auto;
             padding: 20px;
             border-radius: 10px;
-            width: 80%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 500px;
             position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
         .modal-content img {
             width: 100%;
-            max-width: 400px; /* Imágenes más grandes */
+            max-width: 300px;
+            height: auto;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin: 15px auto;
+            display: block;
+            object-fit: cover;
+            aspect-ratio: 1/1;
         }
-
         .close {
             position: absolute;
             top: 10px;
-            right: 20px;
-            font-size: 2rem;
-            color: #E94560; /* Rojo vibrante */
+            right: 15px;
+            font-size: 1.8rem;
+            color: #E94560;
             cursor: pointer;
         }
-
         .close:hover {
-            color: #FF6B6B; /* Rojo más claro */
+            color: #FF6B6B;
         }
 
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+       
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
         }
-
-        /* Botón del minijuego */
-        .minijuego-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #E94560; /* Rojo vibrante */
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #00B8A9;
+        }
+        th {
+            background-color: #0F3460;
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
         }
 
-        .minijuego-btn:hover {
-            transform: scale(1.1);
+  
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
         }
 
-        .minijuego-btn i {
-            font-size: 1.5rem;
+       
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
         }
 
-        /* Estilos del canvas del juego */
-        #juegoCanvas {
-            background-color: #16213E; /* Fondo azul oscuro */
-            border: 2px solid #00B8A9; /* Borde verde azulado */
-            border-radius: 10px;
-            margin-top: 20px;
+       
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            .modal-content img {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
@@ -269,28 +259,67 @@
         <div class="portada-content">
             <h1>Proyecto CanSat</h1>
             <h2>Equipo S-Alpha</h2>
-            <p>Explorando los límites de la tecnología espacial en miniatura.</p>
+            <p>Explorando los límites de la tecnología espacial en miniatura</p>
         </div>
     </header>
 
     <!-- Introducción -->
     <section id="quienes-somos" class="section">
         <h2>¿Quiénes Somos?</h2>
-        <p>Somos el equipo <strong>S-Alpha</strong>, un grupo de estudiantes de 2° de Bachillerato de Ciencias Tecnológicas con una pasión por la ingeniería aeroespacial. Nos hemos unido para diseñar, construir y lanzar un CanSat, un satélite del tamaño de una lata de refresco que nos permitirá realizar investigaciones atmosféricas y mejorar nuestra comprensión de los sistemas espaciales.</p>
-        <p>Estamos comprometidos con la exploración científica y la innovación, aplicando conocimientos en programación, electrónica, diseño estructural y comunicación inalámbrica para lograr una misión exitosa.</p>
+        <p>Somos el grupo <strong>S-Alpha</strong> conformado por los alumnos de 2º de Bachillerato de ciencias tecnológicas <strong>Jules, Alejandro, Hilay, Héctor, Felipe y Mani</strong> del IES La Cala de Mijas (Málaga), bajo la mentoría del profesor Alberto Bermúdez Fernández.</p>
+        <p>Nuestro proyecto CanSat se caracteriza por diversas funciones y características que le proveen de una utilidad única y exclusiva, cumpliendo con todas las especificaciones del Desafío CanSat 2025.</p>
+        
         <div class="foto-grupo">
-            <img src="media/grupo.jpg" alt="Foto del Grupo S-Alpha">
+            <img src="media/grupo.jpg" alt="Equipo S-Alpha">
         </div>
     </section>
 
     <!-- Organización del equipo -->
     <section id="equipo" class="section">
         <h2>Organización del Equipo</h2>
+        <p>Para la correcta realización y organización del trabajo, asignamos roles específicos según las habilidades de cada integrante:</p>
+        
         <div class="team-grid">
             <div class="team-member">
+                <i class="fas fa-cube"></i>
+                <h3>Alejandro Ochoa</h3>
+                <p>Diseño 3D y ensamblaje de circuitos</p>
+                <button class="btn-espacial" onclick="abrirModal('ochoa')">
+                    <span>Ver Detalles</span>
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <div class="team-member">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Mani Afarinzad</h3>
+                <p>Diseño creativo y soldadura</p>
+                <button class="btn-espacial" onclick="abrirModal('mani')">
+                    <span>Ver Detalles</span>
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <div class="team-member">
+                <i class="fas fa-parachute-box"></i>
+                <h3>Jules Schottey</h3>
+                <p>Cálculos de paracaídas y planificación</p>
+                <button class="btn-espacial" onclick="abrirModal('jules')">
+                    <span>Ver Detalles</span>
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <div class="team-member">
+                <i class="fas fa-parachute-box"></i>
+                <h3>Felipe Scher</h3>
+                <p>Diseño del paracaídas</p>
+                <button class="btn-espacial" onclick="abrirModal('felipe')">
+                    <span>Ver Detalles</span>
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+            <div class="team-member">
                 <i class="fas fa-code"></i>
-                <h3>Hilay</h3>
-                <p>Programación, redes sociales, diseño 3D y planificación del despliegue.</p>
+                <h3>Hilay Calvo</h3>
+                <p>Programación y difusión en RR.SS.</p>
                 <button class="btn-espacial" onclick="abrirModal('hilay')">
                     <span>Ver Detalles</span>
                     <i class="fas fa-user"></i>
@@ -298,280 +327,362 @@
             </div>
             <div class="team-member">
                 <i class="fas fa-microchip"></i>
-                <h3>Héctor</h3>
-                <p>Programación y esquematización eléctrica, responsable del control de hardware.</p>
+                <h3>Héctor Molinero</h3>
+                <p>Programación y esquematización eléctrica</p>
                 <button class="btn-espacial" onclick="abrirModal('hector')">
                     <span>Ver Detalles</span>
                     <i class="fas fa-user"></i>
                 </button>
             </div>
             <div class="team-member">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Mani y Lionardo</h3>
-                <p>Diseño creativo, gestión de redes sociales y desarrollo de estrategias de lanzamiento.</p>
-                <button class="btn-espacial" onclick="abrirModal('mani-lionardo')">
-                    <span>Ver Detalles</span>
-                    <i class="fas fa-user"></i>
-                </button>
-            </div>
-            <div class="team-member">
-                <i class="fas fa-cube"></i>
-                <h3>Alejandro Ochoa</h3>
-                <p>Diseño 3D, ensamblaje de circuitos eléctricos y optimización estructural.</p>
-                <button class="btn-espacial" onclick="abrirModal('ochoa')">
-                    <span>Ver Detalles</span>
-                    <i class="fas fa-user"></i>
-                </button>
-            </div>
-            <div class="team-member">
-                <i class="fas fa-parachute-box"></i>
-                <h3>Felipe</h3>
-                <p>Encargado de los sistemas de paracaídas, antena, LoRa y comunicaciones de radio.</p>
-                <button class="btn-espacial" onclick="abrirModal('felipe')">
-                    <span>Ver Detalles</span>
-                    <i class="fas fa-user"></i>
-                </button>
-            </div>
-            <div class="team-member">
-                <i class="fas fa-rocket"></i>
-                <h3>Jules</h3>
-                <p>Especialista en diseño creativo y desarrollo de sistemas de aterrizaje.</p>
-                <button class="btn-espacial" onclick="abrirModal('jules')">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Lionardo Narvaez</h3>
+                <p>Diseño web</p>
+                <button class="btn-espacial" onclick="abrirModal('lionardo')">
                     <span>Ver Detalles</span>
                     <i class="fas fa-user"></i>
                 </button>
             </div>
         </div>
+        
+        <p>Utilizamos metodologías ágiles como <strong>Scrum y Kanban</strong> para estructurar el trabajo y optimizar nuestra eficiencia.</p>
     </section>
 
     <!-- Misión Primaria -->
     <section id="mision-primaria" class="section">
         <h2>Misión Primaria</h2>
-        <p>El objetivo principal de nuestra misión es la recopilación y transmisión de datos atmosféricos durante el descenso del CanSat. Durante el descenso, el CanSat será capaz de capturar información sobre el clima y el medio ambiente en la atmósfera, lo cual es clave para el estudio de fenómenos meteorológicos y la mejora de la tecnología de satélites.</p>
-        <h3>Instrumentación</h3>
-        <div class="instrumentacion-grid">
-            <div class="instrumento">
-                <i class="fas fa-thermometer-half"></i>
-                <h4>Sensor BMP280</h4>
-                <p>Mide la presión atmosférica y la temperatura. Estos datos permitirán analizar las variaciones en la atmósfera en tiempo real.</p>
-            </div>
-            <div class="instrumento">
-                <i class="fas fa-satellite-dish"></i>
-                <h4>Módulo LoRa</h4>
-                <p>Permite la transmisión de datos a larga distancia con eficiencia energética, asegurando la comunicación durante el descenso.</p>
-            </div>
-            <div class="instrumento">
-                <i class="fas fa-brain"></i>
-                <h4>Microcontrolador Arduino</h4>
-                <p>Es el cerebro del CanSat, procesando y almacenando los datos de los sensores y gestionando la comunicación entre componentes.</p>
-            </div>
-        </div>
+        <p>Nuestro objetivo principal es recibir datos atmosféricos durante el descenso del CanSat:</p>
+        
+        <h3>Sensor BMP280</h3>
+        <p>Utilizaremos un sensor BMP280 (o el AdaFruit MPL3115A2) para medir:</p>
+        <ul>
+            <li>Presión atmosférica</li>
+            <li>Temperatura ambiente</li>
+        </ul>
+        <p>Los datos se transmitirán mediante ondas de radio (módulo APC220) e incluirán:</p>
+        <ul>
+            <li>Número de paquete en la secuencia</li>
+            <li>Nombre del equipo</li>
+            <li>Valores separados por comas</li>
+        </ul>
+        
+        <h3>Diseño del Paracaídas</h3>
+        <p>Paracaídas esférico de tela Ripstop con:</p>
+        <ul>
+            <li>Radio de 12.66 cm (calculado con fórmulas aerodinámicas)</li>
+            <li>8 gajos diseñados matemáticamente</li>
+            <li>Sistema anti-G (quitavueltas)</li>
+            <li>Velocidad de descenso objetivo: 9.5 m/s</li>
+        </ul>
+        
+        <h3>Fórmulas Utilizadas</h3>
+        <p>Para el cálculo del área del paracaídas:</p>
+        <p><code>mg = ½C<sub>D</sub>ρAv<sup>2</sup></code></p>
+        <p>Donde:</p>
+        <ul>
+            <li><strong>m</strong>: Masa del CanSat</li>
+            <li><strong>g</strong>: Aceleración gravitatoria</li>
+            <li><strong>C<sub>D</sub></strong>: Coeficiente de arrastre</li>
+            <li><strong>ρ</strong>: Densidad del aire</li>
+            <li><strong>A</strong>: Área del paracaídas</li>
+            <li><strong>v</strong>: Velocidad de descenso</li>
+        </ul>
+        
+        <h3>Diseño de la Carcasa</h3>
+        <p>Nuevo modelo diseñado en Sketch con:</p>
+        <ul>
+            <li>4 orificios para unión con tornillos</li>
+            <li>Sistema de ventilación mejorado</li>
+            <li>Baldas ajustables a diferentes alturas</li>
+            <li>Cumple con las dimensiones reglamentarias (66mm diámetro × 115mm altura)</li>
+        </ul>
     </section>
 
     <!-- Misión Secundaria -->
     <section id="mision-secundaria" class="section">
         <h2>Misión Secundaria</h2>
-        <p>El CanSat también tiene una misión secundaria que consiste en la predicción del punto de caída y el seguimiento en tiempo real, lo que nos permitirá realizar un análisis preciso de la trayectoria del CanSat durante su descenso y mejorar futuras misiones.</p>
+        <p>Sistema avanzado de seguimiento y predicción de trayectoria:</p>
+        
         <h3>Seguimiento en Tiempo Real</h3>
-        <p>Gracias a un sensor GPS integrado en el CanSat, podremos conocer la ubicación exacta del dispositivo en todo momento. Esto se complementa con un programa desarrollado en Python que procesará los datos del GPS y los mostrará en un mapa en tiempo real utilizando Google Maps.</p>
-        <h3>Predicción del Punto de Caída</h3>
-        <p>Utilizaremos cálculos avanzados para predecir el punto de caída del CanSat antes de que ocurra. Estos cálculos tomarán en cuenta varios factores:</p>
+        <p>Implementamos un módulo GPS NEO6MV2 que:</p>
         <ul>
-            <li><strong>Altura inicial:</strong> Determinada por el sensor BMP280.</li>
-            <li><strong>Velocidad de descenso:</strong> Calculada en intervalos de 1 segundo.</li>
-            <li><strong>Condiciones atmosféricas y resistencia aerodinámica:</strong> Utilizando datos del sensor de presión y otros cálculos basados en la resistencia del aire.</li>
+            <li>Proporciona coordenadas exactas</li>
+            <li>Se visualiza en Google Maps mediante software Python</li>
+            <li>Almacena datos en una base de datos local</li>
+        </ul>
+        
+        <h3>Predicción de Trayectoria</h3>
+        <p>Desarrollamos algoritmos que calculan:</p>
+        <ul>
+            <li>Punto de aterrizaje estimado</li>
+            <li>Velocidad instantánea (comparando puntos cada 1 segundo)</li>
+            <li>Altura inicial (del sensor BMP280)</li>
+        </ul>
+        <p>Ecuaciones principales:</p>
+        <p><code>x = x<sub>0</sub> + v<sub>0x</sub>t + ½gt<sup>2</sup></code></p>
+        <p><code>y = y<sub>0</sub> + v<sub>0y</sub>t + ½gt<sup>2</sup></code></p>
+        
+        <h3>Comunicación por Radio</h3>
+        <p>Usamos el módulo APC220 para:</p>
+        <ul>
+            <li>Transmitir datos de sensores</li>
+            <li>Recibir coordenadas GPS</li>
+            <li>Comunicación bidireccional con la estación base</li>
+        </ul>
+    </section>
+
+    <!-- Planificación -->
+    <section id="planificacion" class="section">
+        <h2>Planificación</h2>
+        <p>Hemos seguido un estricto cronograma utilizando diagramas de Gantt:</p>
+        
+        <table>
+            <tr>
+                <th>Actividad</th>
+                <th>Responsables</th>
+                <th>Duración</th>
+            </tr>
+            <tr>
+                <td>Documento PDR</td>
+                <td>Alejandro, Jules, Felipe</td>
+                <td>15 Ene - 15 Feb</td>
+            </tr>
+            <tr>
+                <td>Misión Primaria</td>
+                <td>Hilay, Héctor, Mani</td>
+                <td>20 Ene - 15 Feb</td>
+            </tr>
+            <tr>
+                <td>Misión Secundaria</td>
+                <td>Jules, Alejandro</td>
+                <td>10 Feb - 15 Feb</td>
+            </tr>
+            <tr>
+                <td>Programación</td>
+                <td>Héctor, Mani</td>
+                <td>1 Feb - 15 Feb</td>
+            </tr>
+            <tr>
+                <td>Diseño CanSat</td>
+                <td>Hilay</td>
+                <td>18 Ene - 28 Ene</td>
+            </tr>
+            <tr>
+                <td>Paracaídas</td>
+                <td>Felipe, Jules</td>
+                <td>22 Ene - 15 Feb</td>
+            </tr>
+            <tr>
+                <td>Diseño Web</td>
+                <td>Lionardo</td>
+                <td>10 Feb - 25 Feb</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Presupuesto -->
+    <section id="presupuesto" class="section">
+        <h2>Presupuesto</h2>
+        <p>Total utilizado: <strong>60.59€</strong> (dentro del límite de 500€)</p>
+        
+        <table>
+            <tr>
+                <th>Componente</th>
+                <th>Precio</th>
+                <th>Peso</th>
+            </tr>
+            <tr>
+                <td>BMP280</td>
+                <td>8.71€</td>
+                <td>3g</td>
+            </tr>
+            <tr>
+                <td>APC220</td>
+                <td>23.39€</td>
+                <td>22.7g</td>
+            </tr>
+            <tr>
+                <td>GPS NEO6MV2</td>
+                <td>16€</td>
+                <td>10g</td>
+            </tr>
+            <tr>
+                <td>Proto Shield</td>
+                <td>12.49€</td>
+                <td>45g</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>60.59€</strong></td>
+                <td><strong>318.7g</strong></td>
+            </tr>
+        </table>
+        
+        <h3>Consumo Energético</h3>
+        <table>
+            <tr>
+                <th>Componente</th>
+                <th>Consumo</th>
+            </tr>
+            <tr>
+                <td>APC220</td>
+                <td>40mAh (0.225Wh)</td>
+            </tr>
+            <tr>
+                <td>GPS NEO6MV2</td>
+                <td>100mAh (0.500Wh)</td>
+            </tr>
+            <tr>
+                <td>BMP280</td>
+                <td>0.0027mAh (0.00355Wh)</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>~140mAh (0.72855Wh)</strong></td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Difusión -->
+    <section id="difusion" class="section">
+        <h2>Difusión y Patrocinio</h2>
+        <p>Hemos documentado todo nuestro progreso en Instagram: <strong>@s.alpha_cansat</strong></p>
+        <p>Contamos con el patrocinio de:</p>
+        <ul>
+            <li><strong>Dreamland 2000 Properties</strong></li>
+            <li><strong>Studio 8 Event Design</strong></li>
         </ul>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Equipo S-Alpha. Todos los derechos reservados.</p>
+    <footer class="section">
+        <p>&copy; 2025 Equipo S-Alpha - IES La Cala de Mijas (Málaga)</p>
+        <p>Proyecto realizado para el Desafío CanSat 2025</p>
     </footer>
 
-    <!-- Modales -->
-    <div id="modal-hilay" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal('hilay')">&times;</span>
-            <h2>Hilay</h2>
-            <img src="media/hilay.jpg" alt="Foto de Hilay">
-            <p><strong>Rol:</strong> Programación, redes sociales, diseño 3D y planificación del despliegue.</p>
-            <p><strong>Descripción:</strong> Hilay es el encargado de la programación del CanSat y de gestionar las redes sociales del equipo. También contribuye al diseño 3D y a la planificación del despliegue del satélite.</p>
-        </div>
-    </div>
-
-    <div id="modal-hector" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModal('hector')">&times;</span>
-            <h2>Héctor</h2>
-            <img src="media/hector.jpg" alt="Foto de Héctor">
-            <p><strong>Rol:</strong> Programación y esquematización eléctrica, responsable del control de hardware.</p>
-            <p><strong>Descripción:</strong> Héctor se encarga de la programación y del diseño eléctrico del CanSat. Es el responsable de garantizar que el hardware funcione correctamente.</p>
-        </div>
-    </div>
-
+    <!-- Modales de integrantes -->
     <div id="modal-ochoa" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal('ochoa')">&times;</span>
-            <h2>Alejandro Ochoa</h2>
-            <img src="media/ochoa.jpg" alt="Foto de Ochoa">
-            <p><strong>Rol:</strong> Diseño 3D, ensamblaje de circuitos eléctricos y optimización estructural.</p>
-            <p><strong>Descripción:</strong> Ochoa es el experto en diseño 3D y ensamblaje de circuitos eléctricos. También trabaja en la optimización estructural del CanSat.</p>
+            <h2>Alejandro Ochoa Suárez</h2>
+            <img src="media/ochoa.jpg" alt="Alejandro Ochoa">
+            <p><strong>Rol Principal:</strong> Diseño 3D y ensamblaje de circuitos</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Diseño de la carcasa en Sketch</li>
+                <li>Ensamblaje de componentes electrónicos</li>
+                <li>Coordinación del documento PDR</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-mani" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('mani')">&times;</span>
+            <h2>Mani Afarinzad</h2>
+            <img src="media/mani.jpg" alt="Mani Afarinzad">
+            <p><strong>Rol Principal:</strong> Diseño creativo y soldadura</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Diseño gráfico del proyecto</li>
+                <li>Soldadura de componentes electrónicos</li>
+                <li>Apoyo en programación</li>
+                <li>Gestión de redes sociales</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-jules" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('jules')">&times;</span>
+            <h2>Jules Schottey</h2>
+            <img src="media/jules.jpg" alt="Jules Schottey">
+            <p><strong>Rol Principal:</strong> Cálculos de paracaídas y planificación</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Cálculos aerodinámicos del paracaídas</li>
+                <li>Planificación temporal del proyecto</li>
+                <li>Coordinación de la misión secundaria</li>
+            </ul>
         </div>
     </div>
 
     <div id="modal-felipe" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal('felipe')">&times;</span>
-            <h2>Felipe</h2>
-            <img src="media/felipe.jpg" alt="Foto de Felipe">
-            <p><strong>Rol:</strong> Encargado de los sistemas de paracaídas, antena, LoRa y comunicaciones de radio.</p>
-            <p><strong>Descripción:</strong> Felipe es responsable de los sistemas de paracaídas, la antena y las comunicaciones de radio. Asegura que el CanSat pueda transmitir datos correctamente.</p>
+            <h2>Felipe Scher Barcia</h2>
+            <img src="media/felipe.jpg" alt="Felipe Scher">
+            <p><strong>Rol Principal:</strong> Diseño del paracaídas</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Diseño y construcción del paracaídas</li>
+                <li>Pruebas aerodinámicas</li>
+                <li>Optimización del sistema de descenso</li>
+            </ul>
         </div>
     </div>
 
-    <!-- Botón del minijuego -->
-    <div class="minijuego-btn" onclick="abrirMinijuego()">
-        <i class="fas fa-gamepad"></i>
-    </div>
-
-    <!-- Ventana del minijuego -->
-    <div id="minijuego-modal" class="modal">
+    <div id="modal-hilay" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="cerrarMinijuego()">&times;</span>
-            <h2>CanSat Minijuego</h2>
-            <p>Controla el descenso del CanSat y evita los obstáculos. ¡Recoge datos para ganar puntos!</p>
-            <canvas id="juegoCanvas" width="400" height="600"></canvas>
+            <span class="close" onclick="cerrarModal('hilay')">&times;</span>
+            <h2>Hilay Calvo Groos</h2>
+            <img src="media/hilay.jpg" alt="Hilay Calvo">
+            <p><strong>Rol Principal:</strong> Programación y difusión</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Desarrollo del software de control principal</li>
+                <li>Programación del sistema de transmisión de datos</li>
+                <li>Gestión de la cuenta @s.alpha_cansat en Instagram</li>
+                <li>Coordinación de la documentación técnica</li>
+            </ul>
         </div>
     </div>
 
-    <!-- Script para los modales y el minijuego -->
+    <div id="modal-hector" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('hector')">&times;</span>
+            <h2>Héctor Molinero Guerrero</h2>
+            <img src="media/hector.jpg" alt="Héctor Molinero">
+            <p><strong>Rol Principal:</strong> Programación y esquemas eléctricos</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Programación del Arduino</li>
+                <li>Diseño de esquemas eléctricos</li>
+                <li>Integración de sensores</li>
+                <li>Pruebas de comunicación</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-lionardo" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('lionardo')">&times;</span>
+            <h2>Lionardo Narvaez</h2>
+            <img src="media/lionardo.jpg" alt="Lionardo Narvaez">
+            <p><strong>Rol Principal:</strong> Diseño web</p>
+            <p><strong>Contribuciones:</strong></p>
+            <ul>
+                <li>Diseño y desarrollo de la página web del proyecto</li>
+                <li>Implementación de la estructura y estilos</li>
+                <li>Optimización para dispositivos móviles</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
-        // Funciones para abrir y cerrar modales
+        // Funciones para modales
         function abrirModal(miembro) {
-            const modal = document.getElementById(`modal-${miembro}`);
-            modal.style.display = "block";
+            document.getElementById(`modal-${miembro}`).style.display = "block";
         }
-
         function cerrarModal(miembro) {
-            const modal = document.getElementById(`modal-${miembro}`);
-            modal.style.display = "none";
+            document.getElementById(`modal-${miembro}`).style.display = "none";
         }
-
-        // Cerrar el modal si se hace clic fuera de él
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = "none";
             }
         }
-
-        // Variables del minijuego
-        let canvas, ctx;
-        let cansatX, cansatY;
-        let obstaculos = [];
-        let puntos = 0;
-        let gameOver = false;
-
-        // Función para abrir el minijuego
-        function abrirMinijuego() {
-            const modal = document.getElementById("minijuego-modal");
-            modal.style.display = "block";
-            iniciarJuego();
-        }
-
-        // Función para cerrar el minijuego
-        function cerrarMinijuego() {
-            const modal = document.getElementById("minijuego-modal");
-            modal.style.display = "none";
-            detenerJuego();
-        }
-
-        // Iniciar el juego
-        function iniciarJuego() {
-            canvas = document.getElementById("juegoCanvas");
-            ctx = canvas.getContext("2d");
-
-            // Posición inicial del CanSat
-            cansatX = canvas.width / 2;
-            cansatY = 50;
-
-            // Crear obstáculos
-            obstaculos = [];
-            for (let i = 0; i < 5; i++) {
-                obstaculos.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    width: 50,
-                    height: 20,
-                    velocidad: 2
-                });
-            }
-
-            // Iniciar el bucle del juego
-            gameOver = false;
-            puntos = 0;
-            bucleJuego();
-        }
-
-        // Detener el juego
-        function detenerJuego() {
-            gameOver = true;
-        }
-
-        // Bucle principal del juego
-        function bucleJuego() {
-            if (gameOver) return;
-
-            // Limpiar el canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Dibujar el CanSat
-            ctx.fillStyle = "#00B8A9"; // Color del CanSat
-            ctx.fillRect(cansatX, cansatY, 30, 30);
-
-            // Dibujar obstáculos
-            ctx.fillStyle = "#E94560"; // Color de los obstáculos
-            for (let obstaculo of obstaculos) {
-                ctx.fillRect(obstaculo.x, obstaculo.y, obstaculo.width, obstaculo.height);
-                obstaculo.y += obstaculo.velocidad;
-
-                // Detectar colisión
-                if (
-                    cansatX < obstaculo.x + obstaculo.width &&
-                    cansatX + 30 > obstaculo.x &&
-                    cansatY < obstaculo.y + obstaculo.height &&
-                    cansatY + 30 > obstaculo.y
-                ) {
-                    gameOver = true;
-                    alert("¡Game Over! Puntos: " + puntos);
-                    return;
-                }
-
-                // Si el obstáculo sale de la pantalla, lo reiniciamos
-                if (obstaculo.y > canvas.height) {
-                    obstaculo.y = -20;
-                    obstaculo.x = Math.random() * canvas.width;
-                    puntos += 10; // Sumar puntos por evitar obstáculos
-                }
-            }
-
-            // Mostrar puntos
-            ctx.fillStyle = "white";
-            ctx.font = "20px Arial";
-            ctx.fillText("Puntos: " + puntos, 10, 30);
-
-            // Continuar el bucle
-            requestAnimationFrame(bucleJuego);
-        }
-
-        // Movimiento del CanSat
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "ArrowLeft" && cansatX > 0) {
-                cansatX -= 10;
-            }
-            if (e.key === "ArrowRight" && cansatX < canvas.width - 30) {
-                cansatX += 10;
-            }
-        });
     </script>
 </body>
 </html>
